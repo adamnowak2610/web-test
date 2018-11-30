@@ -1,5 +1,6 @@
 package com.adam.webtest;
 
+import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -15,13 +16,16 @@ import java.io.PrintWriter;
 public class Servlet1 extends HttpServlet {
 
     public void service(HttpServletRequest req, HttpServletResponse res)
-            throws IOException {
+            throws IOException, ServletException {
 
         Integer x = Integer.valueOf(req.getParameter("x"));
         Integer y = Integer.valueOf(req.getParameter("y"));
+        Integer z = Integer.valueOf(req.getParameter("z"));
 
-        PrintWriter out = res.getWriter();
-        out.println(x + y);
+        req.setAttribute("result", Math.pow(((x + y) * z),(2)));
+
+        RequestDispatcher rd = req.getRequestDispatcher("result.jsp");
+        rd.forward(req, res);
 
     }
 
