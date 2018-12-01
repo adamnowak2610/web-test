@@ -18,11 +18,13 @@ public class Servlet1 extends HttpServlet {
     public void service(HttpServletRequest req, HttpServletResponse res)
             throws IOException, ServletException {
 
-        Integer x = Integer.valueOf(req.getParameter("x"));
-        Integer y = Integer.valueOf(req.getParameter("y"));
-        Integer z = Integer.valueOf(req.getParameter("z"));
+        Integer a = Integer.valueOf(req.getParameter("x"));
+        Integer b = Integer.valueOf(req.getParameter("y"));
+        Integer c = Integer.valueOf(req.getParameter("z"));
 
-        req.setAttribute("result", Math.pow(((x + y) * z),(2)));
+        req.setAttribute("result", Math.pow(((a + b) * c),(2)));
+
+        req.setAttribute("krok",(((((req.getParameter("x")))+(req.getParameter("y")))+"*"+(req.getParameter("z")))+"^2"));
 
         RequestDispatcher rd = req.getRequestDispatcher("result.jsp");
         rd.forward(req, res);
