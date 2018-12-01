@@ -24,7 +24,7 @@ public class Servlet1 extends HttpServlet {
 
         req.setAttribute("result", Math.pow(((a + b) * c),(2)));
 
-        req.setAttribute("krok",(((((req.getParameter("x")))+(req.getParameter("y")))+"*"+(req.getParameter("z")))+"^2"));
+        req.setAttribute("krok",((("("+((req.getParameter("x")))+"+"+(req.getParameter("y"))+")")+"*"+(req.getParameter("z")))+"^2"));
 
         RequestDispatcher rd = req.getRequestDispatcher("result.jsp");
         rd.forward(req, res);
