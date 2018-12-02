@@ -8,6 +8,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.math.BigInteger;
 
 @WebServlet(
         name = "Servlet1"
@@ -22,9 +23,15 @@ public class Servlet1 extends HttpServlet {
         Integer b = Integer.valueOf(req.getParameter("y"));
         Integer c = Integer.valueOf(req.getParameter("z"));
 
-        req.setAttribute("result", Math.pow(((a + b) * c),(2)));
+        long j;
+        j = Math.round(Math.pow((a * b),(c)));
 
-        req.setAttribute("krok",((("("+((req.getParameter("x")))+"+"+(req.getParameter("y"))+")")+"*"+(req.getParameter("z")))+"^2"));
+        BigInteger e = BigInteger.valueOf(0);
+                String i;
+                i = String.valueOf(j);
+        BigInteger f = new BigInteger(i).add(e);
+
+        req.setAttribute("result", f);
 
         RequestDispatcher rd = req.getRequestDispatcher("result.jsp");
         rd.forward(req, res);
