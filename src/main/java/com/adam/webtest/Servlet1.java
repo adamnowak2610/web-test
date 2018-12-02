@@ -31,7 +31,10 @@ public class Servlet1 extends HttpServlet {
                 i = String.valueOf(j);
         BigInteger f = new BigInteger(i).add(e);
 
+        String g = ("("+a+"*"+b+")"+"^"+c);
+
         req.setAttribute("result", f);
+        req.setAttribute("krok", g);
 
         RequestDispatcher rd = req.getRequestDispatcher("result.jsp");
         rd.forward(req, res);
